@@ -1,0 +1,2 @@
+rootProject.name='AACTemplate'
+include ':app'
