@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 //instance of retrofit, database, dao can be provided from here
-@Module
+@Module(includes = [ViewModelModule::class])
 class AppModule {
     @Provides
     @Singleton

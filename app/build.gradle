@@ -60,6 +60,7 @@ dependencies {
     implementation deps.dagger.android_support
     implementation deps.constraint_layout
     implementation deps.kotlin.stdlib
+    implementation 'org.glassfish:javax.annotation:10.0-b28'
 
     implementation deps.timber
 
