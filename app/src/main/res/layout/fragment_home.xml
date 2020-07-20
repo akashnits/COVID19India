@@ -8,11 +8,12 @@
         <import type="com.akash.tracker.covid19.vo.Resource"/>
 
         <variable
-            name="product"
-            type="com.akash.tracker.covid19.vo.Product" />
+            name="covid"
+            type="com.akash.tracker.covid19.vo.Covid" />
+
         <variable
-            name="productViewModel"
-            type="com.akash.tracker.covid19.vo.CovidModel" />
+            name="covidViewModel"
+            type="com.akash.tracker.covid19.ui.home.CovidViewModel" />
 
         <variable
             name="retryCallback"
@@ -22,7 +23,7 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.product.ProductFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -32,7 +33,7 @@
 
     <include
         layout="@layout/loading_state"
-        app:resource="@{(Resource) product}"
+        app:resource="@{(Resource) covid}"
         app:callback="@{() -> retryCallback.retry()}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

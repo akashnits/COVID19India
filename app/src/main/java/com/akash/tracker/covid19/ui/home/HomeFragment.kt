@@ -1,4 +1,4 @@
-package com.akash.tracker.covid19.ui.product
+package com.akash.tracker.covid19.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +9,6 @@ import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.navigation.fragment.findNavController
-import androidx.transition.TransitionInflater
 import com.akash.tracker.covid19.AppExecutors
 import com.akash.tracker.covid19.R
 import com.akash.tracker.covid19.binding.FragmentDataBindingComponent
@@ -24,12 +21,12 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class ProductFragment : Fragment(), Injectable {
+class HomeFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val productViewModel: ProductViewModel by viewModels {
+    val covidViewModel: CovidViewModel by viewModels {
         viewModelFactory
     }
 
@@ -46,13 +43,13 @@ class ProductFragment : Fragment(), Injectable {
         // Inflate the layout for this fragment
         val dataBinding = DataBindingUtil.inflate<FragmentProductBinding>(
             inflater,
-            R.layout.fragment_product,
+            R.layout.fragment_home,
             container,
             false
         )
         dataBinding.retryCallback = object : RetryCallback {
             override fun retry() {
-                productViewModel.retry()
+                covidViewModel.retry()
             }
         }
         binding = dataBinding

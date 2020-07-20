@@ -2,9 +2,9 @@ package com.akash.tracker.covid19.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.akash.tracker.covid19.ui.product.ProductViewModel
+import com.akash.tracker.covid19.ui.home.CovidViewModel
 import com.akash.tracker.covid19.ui.user.UserViewModel
-import com.akash.tracker.covid19.viewmodel.AACTemplateViewModelFactory
+import com.akash.tracker.covid19.viewmodel.CovidAppViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -15,8 +15,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ProductViewModel::class)
-    abstract fun bindProductViewModel(productViewModel: ProductViewModel): ViewModel
+    @ViewModelKey(CovidViewModel::class)
+    abstract fun bindCovidViewModel(covidViewModel: CovidViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -25,6 +25,6 @@ abstract class ViewModelModule {
 
 
     @Binds
-    abstract fun bindAACViewModelFactory(aacTemplateViewModelFactory: AACTemplateViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindCovidViewModelFactory(covidAppViewModelFactory: CovidAppViewModelFactory): ViewModelProvider.Factory
 
 }
