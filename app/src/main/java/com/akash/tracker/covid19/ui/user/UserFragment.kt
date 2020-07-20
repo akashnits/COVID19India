@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.akash.tracker.covid19.R
+import com.akash.tracker.covid19.di.Injectable
 import com.akash.tracker.covid19.repository.UserRepository
 import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  */
-class UserFragment : Fragment() {
+class UserFragment : Fragment(), Injectable {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

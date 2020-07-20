@@ -16,6 +16,7 @@ import com.akash.tracker.covid19.AppExecutors
 import com.akash.tracker.covid19.R
 import com.akash.tracker.covid19.binding.FragmentDataBindingComponent
 import com.akash.tracker.covid19.databinding.FragmentProductBinding
+import com.akash.tracker.covid19.di.Injectable
 import com.akash.tracker.covid19.ui.common.RetryCallback
 import com.akash.tracker.covid19.util.autoCleared
 import javax.inject.Inject
@@ -23,7 +24,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class ProductFragment : Fragment() {
+class ProductFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
