@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.akash.tracker.covid19.AppExecutors
 import com.akash.tracker.covid19.R
 import com.akash.tracker.covid19.binding.FragmentDataBindingComponent
-import com.akash.tracker.covid19.databinding.FragmentProductBinding
+import com.akash.tracker.covid19.databinding.FragmentHomeBinding
 import com.akash.tracker.covid19.di.Injectable
 import com.akash.tracker.covid19.ui.common.RetryCallback
 import com.akash.tracker.covid19.util.autoCleared
@@ -34,14 +34,14 @@ class HomeFragment : Fragment(), Injectable {
     lateinit var appExecutors: AppExecutors
 
     var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
-    var binding by autoCleared<FragmentProductBinding>()
+    var binding by autoCleared<FragmentHomeBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val dataBinding = DataBindingUtil.inflate<FragmentProductBinding>(
+        val dataBinding = DataBindingUtil.inflate<FragmentHomeBinding>(
             inflater,
             R.layout.fragment_home,
             container,
