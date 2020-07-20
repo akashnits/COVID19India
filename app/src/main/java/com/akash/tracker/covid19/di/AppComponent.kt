@@ -1,5 +1,6 @@
 package com.akash.tracker.covid19.di
 
+import android.app.Application
 import com.akash.tracker.covid19.COVID19App
 import dagger.BindsInstance
 import dagger.Component
@@ -12,9 +13,9 @@ interface AppComponent {
     @Component.Builder
         interface Builder{
             @BindsInstance
-            fun application(COVID19App: COVID19App): Builder
+            fun application(app: Application): Builder
             fun build(): AppComponent
     }
 
-    fun inject(app: COVID19App)
+    fun inject(covid19App: COVID19App)
 }

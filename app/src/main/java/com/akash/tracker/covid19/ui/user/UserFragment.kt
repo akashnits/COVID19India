@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.akash.tracker.covid19.R
+import com.akash.tracker.covid19.repository.UserRepository
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
