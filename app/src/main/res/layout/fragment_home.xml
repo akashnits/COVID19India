@@ -33,7 +33,6 @@
 
     <include
         layout="@layout/loading_state"
-        app:resource="@{(Resource) covid}"
         app:callback="@{() -> retryCallback.retry()}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

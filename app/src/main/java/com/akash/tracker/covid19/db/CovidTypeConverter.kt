@@ -15,6 +15,7 @@ import java.util.*
  */
 object CovidTypeConverter {
     @TypeConverter
+    @JvmStatic
     fun stringToCasesTimeSeriesItemList(data: String?): List<CasesTimeSeriesItem> {
         if (data == null) {
             return Collections.emptyList()
@@ -25,11 +26,13 @@ object CovidTypeConverter {
     }
 
     @TypeConverter
+    @JvmStatic
     fun casesTimeSeriesItemListToString(casesTimeSeriesItemList: List<CasesTimeSeriesItem?>?): String {
         return Gson().toJson(casesTimeSeriesItemList)
     }
 
     @TypeConverter
+    @JvmStatic
     fun stringToTestedItemList(data: String?): List<TestedItem> {
         if (data == null) {
             return Collections.emptyList()
@@ -40,11 +43,13 @@ object CovidTypeConverter {
     }
 
     @TypeConverter
+    @JvmStatic
     fun testedItemListToString(testedItemList: List<TestedItem?>?): String {
         return Gson().toJson(testedItemList)
     }
 
     @TypeConverter
+    @JvmStatic
     fun stringToStatewiseItemList(data: String?): List<StatewiseItem> {
         if (data == null) {
             return Collections.emptyList()
@@ -55,6 +60,7 @@ object CovidTypeConverter {
     }
 
     @TypeConverter
+    @JvmStatic
     fun statewiseItemListToString(statewiseItemList: List<StatewiseItem?>?): String {
         return Gson().toJson(statewiseItemList)
     }
