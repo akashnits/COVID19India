@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.akash.tracker.covid19.AppExecutors
 import com.akash.tracker.covid19.R
@@ -35,6 +36,8 @@ class HomeFragment : Fragment(), Injectable {
 
     var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
     var binding by autoCleared<FragmentHomeBinding>()
+    private var adapter by autoCleared<CovidStateStatsAdapter>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,11 +62,11 @@ class HomeFragment : Fragment(), Injectable {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //repoViewModel.setId(params.owner, params.name)
+        covidViewModel.loadCovidData()
         binding.lifecycleOwner = viewLifecycleOwner
-//        binding.repo = repoViewModel.repo
-//
-//        val adapter = ContributorAdapter(dataBindingComponent, appExecutors) {
+        binding.covid = covidViewModel.covidData
+
+        val adapter = CovidStateStatsAdapter(dataBindingComponent, appExecutors)
 //                contributor, imageView ->
 //            val extras = FragmentNavigatorExtras(
 //                imageView to contributor.login
@@ -73,8 +76,21 @@ class HomeFragment : Fragment(), Injectable {
 //                extras
 //            )
 //        }
-//        this.adapter = adapter
-//        binding.contributorList.adapter = adapter
-//        initContributorList(repoViewModel)
+        this.adapter = adapter
+        binding.rvStateStats.adapter = adapter
+        initCovidStateStatsAdapter(covidViewModel)
+    }
+
+
+    private fun initCovidStateStatsAdapter(covidViewModel: CovidViewModel){
+        covidViewModel.covidData.observe(viewLifecycleOwner, Observer {listResource ->
+            if(listResource.data != null){
+                if(listResource.data.statewise != null && listResource.data.statewise.isNotEmpty()){
+                    adapter.submitList(listResource.data.statewise)
+                }else{
+                    adapter.submitList(emptyList())
+                }
+            }
+        })
     }
 }

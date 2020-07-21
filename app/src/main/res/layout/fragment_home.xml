@@ -7,13 +7,13 @@
         
         <import type="com.akash.tracker.covid19.vo.Resource"/>
 
-        <variable
-            name="covid"
-            type="com.akash.tracker.covid19.vo.Covid" />
+        <import type="androidx.lifecycle.LiveData"/>
+
+        <import type="com.akash.tracker.covid19.vo.Covid"/>
 
         <variable
-            name="covidViewModel"
-            type="com.akash.tracker.covid19.ui.home.CovidViewModel" />
+            name="covid"
+            type="LiveData&lt;Resource&lt;Covid>>" />
 
         <variable
             name="retryCallback"
@@ -25,14 +25,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStateStats"
+        app:layoutManager="LinearLayoutManager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/item_covid_stats" />
 
     <include
         layout="@layout/loading_state"
+        app:resource="@{(Resource) covid}"
         app:callback="@{() -> retryCallback.retry()}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

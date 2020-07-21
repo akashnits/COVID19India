@@ -10,10 +10,14 @@ import javax.inject.Inject
 
 class CovidViewModel @Inject constructor(private val covidRepository: CovidRepository) : ViewModel(), RetryCallback {
 
-    val covidData: LiveData<Resource<Covid>> = covidRepository.loadCovidData()
+    lateinit var covidData: LiveData<Resource<Covid>>
+
+    fun loadCovidData(){
+        covidData=  covidRepository.loadCovidData()
+    }
 
     override fun retry() {
        // try fetching again
-        covidRepository.loadCovidData()
+        loadCovidData()
     }
 }
