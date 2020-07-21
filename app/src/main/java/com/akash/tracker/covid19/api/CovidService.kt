@@ -8,7 +8,7 @@ interface CovidService {
 
     //calls to rest apis
 
-    @GET
+    @GET("/data.json")
     fun getCovidData() : LiveData<ApiResponse<Covid>>
 
 }

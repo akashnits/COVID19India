@@ -1,5 +1,6 @@
 package com.akash.tracker.covid19.ui.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingComponent
@@ -29,6 +30,7 @@ class CovidStateStatsAdapter(val dataBindingComponent: DataBindingComponent, app
 ) {
 
     override fun createBinding(parent: ViewGroup): ItemCovidStatsBinding {
+        Log.d("CovidStateStatsAdapter", "create binding called")
         val binding= DataBindingUtil.inflate<ItemCovidStatsBinding>(
             LayoutInflater.from(parent.context),
             R.layout.item_covid_stats,
