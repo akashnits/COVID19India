@@ -29,7 +29,7 @@ class AppModule {
     @Singleton
     fun provideRoomDatabase(app: Application): CovidDb{
         return Room
-            .databaseBuilder(app, CovidDb::class.java, "covidDb" )
+            .databaseBuilder(app, CovidDb::class.java, "covid.db" )
             .fallbackToDestructiveMigration()
             .build()
     }

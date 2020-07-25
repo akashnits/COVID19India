@@ -16,6 +16,7 @@
 
 package com.akash.tracker.covid19.ui.common
 
+import android.util.Log
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.ListAdapter
@@ -38,6 +39,7 @@ abstract class DataBoundListAdapter<T, V : ViewDataBinding>(
         .build()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBoundViewHolder<V> {
+        Log.d("DataBoundListAdapter", "onCreateViewHolder called")
         val binding = createBinding(parent)
         return DataBoundViewHolder(binding)
     }

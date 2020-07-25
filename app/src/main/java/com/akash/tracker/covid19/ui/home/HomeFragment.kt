@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.doOnPreDraw
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.TransitionInflater
 import com.akash.tracker.covid19.AppExecutors
 import com.akash.tracker.covid19.R
 import com.akash.tracker.covid19.binding.FragmentDataBindingComponent
@@ -57,6 +59,7 @@ class HomeFragment : Fragment(), Injectable {
             }
         }
         binding = dataBinding
+        sharedElementReturnTransition = TransitionInflater.from(context).inflateTransition(R.transition.move)
         return dataBinding.root
     }
 
@@ -79,15 +82,19 @@ class HomeFragment : Fragment(), Injectable {
 //        }
         this.adapter = adapter
         binding.rvStateStats.adapter = adapter
+        postponeEnterTransition()
+        binding.rvStateStats.doOnPreDraw {
+            startPostponedEnterTransition()
+        }
         initCovidStateStatsAdapter(covidViewModel)
     }
 
 
     private fun initCovidStateStatsAdapter(covidViewModel: CovidViewModel){
-        covidViewModel.covidData.observe(viewLifecycleOwner, Observer {listResource ->
+        covidViewModel.covidStatewiseItemList.observe(viewLifecycleOwner, Observer {listResource ->
             if(listResource.data != null){
-                if(listResource.data.statewise != null && listResource.data.statewise.isNotEmpty()){
-                    adapter.submitList(listResource.data.statewise)
+                if(listResource.data.isNullOrEmpty().not()){
+                    adapter.submitList(listResource.data)
                 }else{
                     adapter.submitList(emptyList())
                 }

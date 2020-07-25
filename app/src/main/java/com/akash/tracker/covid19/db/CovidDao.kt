@@ -18,6 +18,6 @@ interface CovidDao {
 //    fun loadProducts(): LiveData<List<Product>>
     //TODO: Write query for loaing covid related data
 
-    @Query("""SELECT * FROM Covid""")
+    @Query("SELECT * FROM Covid WHERE _id=3")
    fun loadCovidData(): LiveData<Covid>
 }
